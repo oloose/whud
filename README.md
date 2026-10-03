@@ -6,31 +6,50 @@ whud is an AI skill that asks you questions about your own work or about a chat 
 
 ## Install
 
-In Claude Code, from your terminal:
+<details>
+<summary><strong>Claude Code</strong></summary>
 
-```sh
+From your terminal:
+
+```bash
 claude plugin marketplace add oloose/whud
 claude plugin install whud@oloose
 ```
 
-Or inside a Claude Code session:
+Or from inside a session:
 
 ```text
 /plugin install whud --marketplace oloose/whud
 ```
 
-In most other agents (Copilot, Codex, Cursor, Gemini CLI and more):
+</details>
 
-```sh
+<details>
+<summary><strong>Copilot, Codex, Cursor, Gemini CLI and other agents</strong></summary>
+
+```bash
 npx skills@latest add oloose/whud
 ```
 
+Pick which agents to install it for. It copies the skill into each agent's own skills folder.
+
+</details>
+
+<details>
+<summary><strong>Copy it by hand</strong></summary>
+
+Put the whole `skills/whud/` folder, not just `SKILL.md`, into your tool's skills folder, for example `.claude/skills/`, `.github/skills/` or `.agents/skills/`.
+
+</details>
+
+<details>
+<summary><strong>Claude and ChatGPT apps (no terminal)</strong></summary>
+
+Zip the `whud` folder and add it in the skills settings of Claude (claude.ai, desktop and mobile apps) or ChatGPT.
+
+</details>
+
 Then run `/whud` in your agent.
-
-More ways to install:
-
-- **Copy it:** put the whole `skills/whud/` folder into your tool's skills folder, for example `.claude/skills/`, `.github/skills/` or `.agents/skills/`.
-- **Upload it:** zip the `whud` folder and add it in the skills settings of Claude (claude.ai, desktop and mobile apps) or ChatGPT. No terminal needed.
 
 ## Use it
 
