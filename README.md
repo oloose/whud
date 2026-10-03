@@ -1,8 +1,8 @@
 # whud
 
-**W**hat **h**ave **y**ou **d**one?! Quiz yourself on what your AI just did and keep understanding what you create.
+**W**hat **h**ave **y**ou **d**one?! Quiz yourself on what you did and keep understanding what you create.
 
-whud is an AI skill that asks you questions about your own work or about a chat whether conversations, discussions, learning sessions or code and text changes in your repository. Answering from memory is what makes it stick. Reading is passive.
+whud is an AI skill that asks you questions about your own work or about a AI chat whether conversations, discussions, learning sessions or code and text changes in your repository. Answering from memory is what makes it stick. Reading is passive.
 
 ## Install
 
