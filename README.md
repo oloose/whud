@@ -6,7 +6,14 @@ whud is an AI skill that asks you questions about your own work or about a chat 
 
 ## Install
 
-In Claude Code:
+In Claude Code, from your terminal:
+
+```sh
+claude plugin marketplace add oloose/whud
+claude plugin install whud@oloose
+```
+
+Or inside a Claude Code session:
 
 ```text
 /plugin install whud --marketplace oloose/whud

@@ -87,7 +87,7 @@ whud/                               repo root = plugin root
 
 - A plain Agent Skills folder: any tool that supports the format can load it. Manual install means copying or symlinking `skills/whud/` into the tool's skills folder (`.claude/skills/`, `.github/skills/`, `.agents/skills/`).
 - `npx skills add oloose/whud` finds the skill (it checks `skills/` first).
-- Claude Code plugin: the repo root is the plugin root, and the repo is its own marketplace (`whud`): `.claude-plugin/marketplace.json` lists the `whud` plugin with `source: "./"`. Install with `/plugin marketplace add oloose/whud` and `/plugin install whud@whud`.
+- Claude Code plugin: the repo root is the plugin root, and the repo is its own marketplace (named `oloose`, which is what the plugin list shows as "from"): `.claude-plugin/marketplace.json` lists the `whud` plugin with `source: "./"`. Install with `claude plugin marketplace add oloose/whud` and `claude plugin install whud@oloose`.
 - Claude (claude.ai and the desktop app) and ChatGPT take a zipped skill folder through their settings, no terminal needed.
 - A native Codex plugin is not planned for now. Its manifest takes a single `skills` path and drops symlinks on install, so `npx skills add` is the Codex route.
 
