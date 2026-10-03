@@ -1,0 +1,81 @@
+name: Release
+
+# Manual release: Claude writes the release notes from the changes on main since
+# the last tag, then the version in .claude-plugin/plugin.json is set, tagged
+# and published as a GitHub release.
+# Needs the repo secret CLAUDE_CODE_OAUTH_TOKEN (create it with `claude setup-token`).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release, for example 0.2.0
+        required: true
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check the version
+        id: check
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "::error::Not a version: $VERSION"; exit 1; }
+          if git rev-parse -q --verify "refs/tags/v$VERSION" > /dev/null; then
+            echo "::error::Tag v$VERSION already exists."
+            exit 1
+          fi
+          last_tag=$(git describe --tags --abbrev=0 2>/dev/null || true)
+          echo "last_tag=$last_tag" >> "$GITHUB_OUTPUT"
+          echo "range=${last_tag:+$last_tag..}HEAD" >> "$GITHUB_OUTPUT"
+
+      - name: Write the release notes
+        id: notes
+        uses: anthropics/claude-code-action@ed670b4cf9de2a5a570d130d2f6197b9e543cd64 # v1.0.240
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          prompt: |
+            Write the GitHub release notes for v${{ inputs.version }} of whud.
+            The changes are the commits in `${{ steps.check.outputs.range }}`. Read them with `git log ${{ steps.check.outputs.range }} --no-merges --stat`.
+            Group them under short headings such as Added, Changed and Fixed, and leave out empty ones.
+            Describe what changed for users, not file names. Do not invent anything that is not in the commits.
+            Return only the Markdown in the `notes` field.
+          claude_args: |
+            --allowedTools "Bash(git log:*),Bash(git show:*)"
+            --json-schema '{"type":"object","properties":{"notes":{"type":"string"}},"required":["notes"]}'
+
+      - name: Set the version
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          jq --arg v "$VERSION" '.version = $v' .claude-plugin/plugin.json > "$RUNNER_TEMP/plugin.json"
+          mv "$RUNNER_TEMP/plugin.json" .claude-plugin/plugin.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || git commit -am "release: v$VERSION"
+          git push
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+          LAST_TAG: ${{ steps.check.outputs.last_tag }}
+          NOTES_JSON: ${{ steps.notes.outputs.structured_output }}
+        run: |
+          jq -r .notes <<< "$NOTES_JSON" > "$RUNNER_TEMP/notes.md"
+          [ -s "$RUNNER_TEMP/notes.md" ] || { echo "::error::Claude returned no release notes."; exit 1; }
+          if [ -n "$LAST_TAG" ]; then
+            printf '\n**Full changelog:** https://github.com/%s/compare/%s...v%s\n' "$GITHUB_REPOSITORY" "$LAST_TAG" "$VERSION" >> "$RUNNER_TEMP/notes.md"
+          fi
+          gh release create "v$VERSION" --target "$(git rev-parse HEAD)" --notes-file "$RUNNER_TEMP/notes.md"

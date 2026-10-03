@@ -1,0 +1,20 @@
+{
+  "name": "whud",
+  "displayName": "whud",
+  "version": "0.1.0",
+  "description": "What have you done?! Quizzes you about your own changes or session so you keep understanding what you did.",
+  "author": {
+    "name": "Oliver Loose"
+  },
+  "homepage": "https://github.com/oloose/whud",
+  "repository": "https://github.com/oloose/whud",
+  "license": "MIT",
+  "keywords": [
+    "knowledge-retention",
+    "quiz",
+    "learning"
+  ],
+  "skills": [
+    "./skills/whud"
+  ]
+}

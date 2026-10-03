@@ -1,0 +1,17 @@
+{
+  "name": "whud",
+  "owner": {
+    "name": "Oliver Loose",
+    "url": "https://github.com/oloose"
+  },
+  "description": "whud: quiz yourself on what your AI just did.",
+  "plugins": [
+    {
+      "name": "whud",
+      "source": "./",
+      "description": "What have you done?! Quizzes you about your own changes or session so you keep understanding what you did.",
+      "category": "learning",
+      "tags": ["quiz", "knowledge-retention", "learning"]
+    }
+  ]
+}
