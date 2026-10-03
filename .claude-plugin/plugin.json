@@ -2,7 +2,7 @@
   "name": "whud",
   "displayName": "whud",
   "version": "0.1.0",
-  "description": "What have you done?! Quizzes you about your own changes or session so you keep understanding what you did.",
+  "description": "What have you done?!Quiz yourself on what your AI just did and keep understanding what you create. Asks you questions about your changes or chats.",
   "author": {
     "name": "Oliver Loose"
   },
@@ -10,9 +10,12 @@
   "repository": "https://github.com/oloose/whud",
   "license": "MIT",
   "keywords": [
-    "knowledge-retention",
     "quiz",
-    "learning"
+    "learning",
+    "study",
+    "memory",
+    "knowledge-retention",
+    "productivity"
   ],
   "skills": [
     "./skills/whud"

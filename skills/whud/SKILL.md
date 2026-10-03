@@ -59,9 +59,21 @@ Rules:
 - The user may look things up to answer. Fine.
 - Do not take the answer 1:1 from the material. Do not ask for a commit message or a chat line word for word.
 - Do not paste the passage that answers the question. Name the thing and let them recall.
+- Ask directly about the content and phrase it naturally, like a person would.
+- Personal wording ("we", "you") is fine, but do not overdo it. 
+- Do not refer to the chat or commit itself ("in this chat", "in this commit").
 - Make each question specific enough to have a checkable answer.
 - Go from broad (what, why) to narrow (details).
 - Take reference answers from the material only, never from your own knowledge.
+
+Example questions, for reference only:
+
+- Why did we put the budget talk before the schedule in the project plan?
+- Which of the three slogans did you pick, and what put it ahead of the others?
+- Walk me through what happens when the sync fails halfway.
+- If the villain had never found the map, how would the story be different?
+- Can you explain in your own words what "compound interest" meant in our example?
+- What is your main takeaway from our talk about renting versus buying?
 
 ## The set is fixed
 

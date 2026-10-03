@@ -9,9 +9,9 @@
     {
       "name": "whud",
       "source": "./",
-      "description": "What have you done?! Quizzes you about your own changes or session so you keep understanding what you did.",
+      "description": "What have you done?! Quiz yourself on what your AI just did and keep understanding what you create. Asks you questions about your changes or chats.",
       "category": "learning",
-      "tags": ["quiz", "knowledge-retention", "learning"]
+      "tags": ["quiz", "learning", "study", "memory", "knowledge-retention", "productivity"]
     }
   ]
 }

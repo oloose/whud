@@ -1,77 +1,66 @@
 # whud
 
-**W**hat **h**ave **y**ou **d**one?! Quiz yourself on what your AI just did. whud has an LLM ask you questions about your own changes or chats, so you keep understanding what you ship instead of only skimming it.
+**W**hat **h**ave **y**ou **d**one?! Quiz yourself on what your AI just did and keep understanding what you create.
 
-AI writes a lot of the code. Reviewing a diff feels like understanding, but reading is passive. whud makes you retrieve and explain the change from your own head, which is what makes it stick.
+whud is an AI skill that asks you questions about your own work or about a chat with an LLM from conversations, discussions, learning sessions to code and text changes in your repository. Answering from memory is what makes it stick. Reading is passive.
 
-## What whud is not
+## Install
 
-whud does not ask whether something is true, correct or good. It asks about the context: what was done, what was decided, and why. It tests whether you remember and understand your own work and conversations, not whether they were right. If you in a chat concluded that the Earth is flat, whud asks "what did the chat conclude about the shape of the Earth?" and the right answer is "flat". It never corrects you, grades the quality of your decisions, or acts as a fact-checker or code review.
-
-## Forms
-
-whud comes in two forms:
-
-| Form | What it is | Status |
-| --- | --- | --- |
-| [`skills/whud`](skills/whud/) | An AI skill. Run `/whud diff` or `/whud session` in your agent and get quizzed in the chat. The quick way. | scaffolded |
-| [`whud-hook`](whud-hook/) | A git hook that asks questions after each commit. | spec |
-
-## The skill
-
-One skill, several sources. The core rules (what makes a good question, the answer modes, how many questions) live in [`SKILL.md`](skills/whud/SKILL.md). What gets quizzed is defined per source in `references/`:
-
-- [`diff`](skills/whud/references/diff.md): git changes (a commit, a range, staged or working-tree changes).
-- [`session`](skills/whud/references/session.md): what was discussed and decided in the current chat. Independent of code, so it works for any conversation.
-
-The questions are generated once and asked in order, without adapting to your answers. If you get one wrong, you are told the right answer.
-
-Answer modes: `choice` (multiple choice), `free` (type an answer, then grade yourself) and `graded` (the agent judges your answer). The default is `graded`.
-
-The skill is a plain Agent Skills folder, so any tool that supports the format can load it. `.claude-plugin/plugin.json` additionally makes this repo installable as a Claude plugin.
-
-### Install
-
-Pick the route that fits your tool. All of them install the same `skills/whud/` folder.
-
-**1. Claude Code plugin.** The repo is its own marketplace. Inside Claude Code:
+In Claude Code:
 
 ```text
-/plugin marketplace add oloose/whud
-/plugin install whud@whud
+/plugin install whud --marketplace oloose/whud
 ```
 
-You get updates when you update the marketplace. Run `/whud diff` or `/whud session`.
-
-**2. `npx skills` (most coding agents).** Copies the skill into your project, where you can edit it. It asks which agents to install for and writes to each agent's own skills folder:
+In most other agents (Copilot, Codex, Cursor, Gemini CLI and more):
 
 ```sh
 npx skills@latest add oloose/whud
 ```
 
-**3. Manual copy.** Copy the `skills/whud/` folder (the whole folder, not just `SKILL.md`) into your tool's skills folder:
+Then run `/whud` in your agent.
 
-| Tool | Project | User |
-| --- | --- | --- |
-| Claude Code | `.claude/skills/` | `~/.claude/skills/` |
-| VS Code / GitHub Copilot | `.github/skills/` | `~/.copilot/skills/` |
-| Codex | `.agents/skills/` | `~/.agents/skills/` |
+More ways to install:
 
-### Tools that support skills
+- **Copy it:** put the whole `skills/whud/` folder into your tool's skills folder, for example `.claude/skills/`, `.github/skills/` or `.agents/skills/`.
+- **Upload it:** zip the `whud` folder and add it in the skills settings of Claude (claude.ai, desktop and mobile apps) or ChatGPT. No terminal needed.
+
+## Use it
+
+- `/whud session`: questions about the current chat, whatever it was about. No code or git needed.
+- `/whud diff`: questions about git changes, such as a commit, a range or staged changes.
+- Options: a mode (`choice`, `free`, `graded`) and `max=<n>` questions, for example `/whud session choice max=3`.
+
+## How it works
+
+- Questions are generated once and asked in order. Your answers never change what comes next.
+- If an answer is wrong, you are told the right one.
+- The number of questions scales with how much there is to ask about (7 at most by default).
+- Answer modes:
+  - `choice`: multiple choice
+  - `free`: type an answer, then grade yourself
+  - `graded`: type an answer and the agent judges it (default)
+
+## What whud is not
+
+whud asks about the context: what was done, what was decided and why. It never asks whether something is true, correct or good, and it never corrects you. It is not a fact-checker or a code review.
+
+For example, if a brainstorm ended with "giant mushrooms float in the sky every Monday morning on Earth", whud asks "What was concluded about Monday mornings?" and the right answer is "giant mushrooms float in the sky".
+
+## Works with
 
 whud is a standard [Agent Skills](https://agentskills.io) folder, so it should work in any tool on [that list](https://agentskills.io/clients). Not all of them have been tried.
 
-| Kind | Tools |
-| --- | --- |
-| Coding agents and editors | Claude Code, VS Code with GitHub Copilot, Codex, Cursor, Gemini CLI, JetBrains Junie, Kiro, Goose, OpenCode, Roo Code |
-| For everyone, no code needed | Claude (claude.ai, desktop and mobile apps), ChatGPT |
-| Personal assistants | Hermes Agent, OpenClaw |
+- **Everyone, no code needed:** Claude (claude.ai, desktop and mobile apps), ChatGPT
+- **Coding agents and editors:** Claude Code, VS Code with GitHub Copilot, Codex, Cursor, Gemini CLI, JetBrains Junie, Kiro, Goose, OpenCode, Roo Code
+- **Personal assistants:** Hermes Agent, OpenClaw
 
-The `session` source needs no code, no git and no repository, so it is the one for non-engineers: quiz yourself on any chat, whatever it was about.
+## Forms
 
-## Design notes
+- **Skill** (this repo): the quick way, in your agent's chat.
+- **[Git hook](whud-hook/)** (planned): asks questions after each commit.
 
-The design, reasoning and open questions are in the [spec](docs/spec.md). Ideas for further skills and sources are in [ideas](docs/ideas.md).
+Design, reasoning and open questions are in the [spec](docs/spec.md). Ideas for more skills and sources are in [ideas](docs/ideas.md).
 
 ## License
 
