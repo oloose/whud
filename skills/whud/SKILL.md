@@ -15,11 +15,11 @@ Read the file for the chosen source:
 
 - `diff`, or a commit, range or branch: `references/diff.md`
 - `session`, "this chat": `references/session.md`
-- None given: `diff` if you are in a git repository, otherwise ask.
+- None given: `session`.
 
 ## Arguments
 
-- Mode: `choice`, `free` or `graded`. Default `graded`.
+- Mode: `choice`, `free` or `graded`. Default `choice`.
 - `max=<n>`: most questions to ask. Default 7.
 
 ## Steps

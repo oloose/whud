@@ -34,9 +34,14 @@ More ways to install:
 
 ## Use it
 
+```text
+/whud session choice max=10
+```
+
 - `/whud session`: questions about the current chat, whatever it was about. No code or git needed.
 - `/whud diff`: questions about git changes, such as a commit, a range or staged changes.
 - Options: a mode (`choice`, `free`, `graded`) and `max=<n>` questions, for example `/whud session choice max=3`.
+- Defaults: a plain `/whud` is the same as `/whud session choice max=7`.
 
 ## How it works
 
@@ -44,9 +49,9 @@ More ways to install:
 - If an answer is wrong, you are told the right one.
 - The number of questions scales with how much there is to ask about (7 at most by default).
 - Answer modes:
-  - `choice`: multiple choice
+  - `choice`: multiple choice (default)
   - `free`: type an answer, then grade yourself
-  - `graded`: type an answer and the agent judges it (default)
+  - `graded`: type an answer and the agent judges it
 
 ## What whud is not
 

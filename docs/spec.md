@@ -45,7 +45,7 @@ Why: a fixed set is predictable, can be generated in a single call, can be queue
 - **`free`:** the user types an answer, then the tool shows a reference answer and the user marks themselves right or wrong (like Anki). It forces recall and needs no second LLM call.
 - **`graded`:** the user types an answer and the LLM judges it against the reference answer. Most objective feedback, but the judgement can be wrong. In the hook it costs a second LLM call.
 
-In every mode, a wrong or partly right answer is followed by the right answer. The skill defaults to `graded` (the agent is already in the conversation, so judging is free); the hook defaults to `free`.
+In every mode, a wrong or partly right answer is followed by the right answer. The skill defaults to `choice`; the hook defaults to `free`.
 
 ### Question count
 
@@ -69,6 +69,8 @@ One skill, `whud`, with a source argument. The core rules live in `SKILL.md`; ea
 
 - **`diff`:** git changes: a commit, a range or branch, `staged`, `wip` (working tree), or by default the working-tree changes, else the last commit. Noise (lockfiles, generated files) is filtered and the size is measured in changed lines. Reference answers come from the real code.
 - **`session`:** the current chat. Independent of code and git: it works for any conversation, even one with no code at all. The chat is the only source and it is not fact-checked: the quiz tests memory and understanding of the chat, not whether the chat was right. Questions ask what was said, concluded or decided, phrased naturally ("What did we conclude about X?", never "What is X?"). Personal wording ("we", "you") is fine in moderation, but questions never refer to the chat itself ("In this chat, ..."). The reference answer is what the conversation established, even if it is wrong in the real world. The skill never corrects the content.
+
+With no source given, the skill uses `session`, and with no options it asks in `choice` mode with at most 7 questions.
 
 A third source, `code` (quiz about existing code that is not a change), was considered and left out for now.
 
