@@ -38,7 +38,7 @@ Read the file for the chosen source:
    | very large | max |
 
 5. Write the full set once: each question, its options (`choice`) and its reference answer.
-6. Tell the user the source, the mode and the number of questions in one line.
+6. Tell the user the source, the mode and the number of questions in one short line.
 7. Ask one question at a time. Wait for the answer. Give feedback. Ask the next.
 
 ## Questions
@@ -83,9 +83,14 @@ Example questions, for reference only:
 
 ## Modes
 
-- `choice`: give options A-D. Make every wrong option plausible, each a real misconception or a wrong-but-resonable design, no obvious nonsense. Randomise the position of the right one.
+- `choice`: give options A-D. Make every wrong option plausible, each a real misconception or a wrong-but-reasonable design, no obvious nonsense. Randomise the position of the right one.
+  - Keep all options about the same length, detail and tone. The right one must not be the longest or the most specific, and the wrong ones get just as much detail.
 - `free`: the user types an answer. Show the reference answer. The user marks themselves right, partly right or wrong.
-- `graded`: the user types an answer. Judge it against the reference answer: right, partly right (say what is missing) or wrong (say what is actually true). Be fair but do not accept vague hand-waving as correct.
+- `graded`: the user types an answer. Judge the meaning against the reference answer, not the wording.
+  - Right: the main idea is there, even if the answer is short, informal or in other words.
+  - Partly right: the main idea is there but an important point is missing. Say what is missing.
+  - Wrong: it contradicts the reference or misses the point. Say what is actually true.
+  - Be generous with details and phrasing.
 
 If the answer is wrong or partly right, always give the right answer. Keep feedback to 2-3 sentences.
 
