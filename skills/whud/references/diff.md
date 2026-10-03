@@ -1,6 +1,6 @@
 # Source: diff
 
-Questions about git changes: code, but also docs, config and text.
+Questions about git changes to any file, not just code.
 
 ## Choose the change
 
@@ -10,10 +10,10 @@ From the user's arguments:
 - `staged`: `git diff --cached`.
 - `wip`: `git diff HEAD` (staged and unstaged).
 - Nothing given and `git status --short` shows changes: use them (`git diff HEAD`).
+- Nothing given and no uncommitted changes: use the last commit (`git show HEAD`).
 
 Ask the user instead of guessing when:
 
-- Nothing is given and there are no uncommitted changes. Offer the last commit (`git show HEAD`) as the default.
 - The argument is not a valid ref, or could mean several things.
 - The change is a merge commit (which side?) or a very large range (all of it, or part of it?).
 - You are not in a git repository. Offer `session` instead.
@@ -53,7 +53,7 @@ Example questions, for reference only:
 
 - Why does `parseDate` return `null` now instead of throwing?
 - Walk me through what happens when a user logs in with an expired token.
-- Which of the two caches did we keep, and why?
+- Which of the two pricing options did we keep in the proposal, and why?
 - If the retry loop were reverted, what would break?
 - Why did the README go from two install commands to one?
 - What did you learn about how the migration treats existing rows?

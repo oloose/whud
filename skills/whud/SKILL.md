@@ -1,11 +1,11 @@
 ---
 name: whud
-description: Ask the user questions about their changes, code diffs or the current chat session, to test whether they remember and understand them. Use when the user asks to be quizzed, or says "whud".
+description: Ask the user questions about their changes (code, documents, notes) or the current chat session, to test whether they remember and understand them. Use when asked to quiz the user, or on "whud".
 ---
 
 # whud
 
-Ask the user questions about changes, code diffs or the current chat session.
+Ask the user questions about changes (code, documents, markdown, any files in git) or the current chat session.
 Ask about the context: what was done, what was decided, why. Never judge whether something is true, correct or good. Never correct the user.
 This is not a commit-message or changelog generator, not a code review. Never ask "describe this commit".
 
@@ -13,9 +13,9 @@ This is not a commit-message or changelog generator, not a code review. Never as
 
 Read the file for the chosen source:
 
-- `diff`, a commit, a range or a branch: `references/diff.md`
+- `diff`, or a commit, range or branch: `references/diff.md`
 - `session`, "this chat": `references/session.md`
-- None given: `diff` if you are in a git repository with changes or a recent commit, otherwise ask.
+- None given: `diff` if you are in a git repository, otherwise ask.
 
 ## Arguments
 
