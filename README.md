@@ -43,9 +43,19 @@ Put the whole `skills/whud/` folder, not just `SKILL.md`, into your tool's skill
 </details>
 
 <details>
-<summary><strong>Claude and ChatGPT apps (no terminal)</strong></summary>
+<summary><strong>Claude and GitHub Copilot apps (no terminal)</strong></summary>
 
-Zip the `whud` folder and add it in the skills settings of Claude (claude.ai, desktop and mobile apps) or ChatGPT.
+**Claude**
+
+1. Under **Plugins**, add the marketplace by giving it the URL of this repo: `https://github.com/oloose/whud`.
+2. Under **Skills**, add the `whud` skill.
+
+**GitHub Copilot**
+
+1. Under **Plugins**, add the plugin by its `plugin@marketplace` name: `whud@oloose`.
+2. Under **Skills**, add the `whud` skill.
+
+Alternatively, zip the `whud` folder and upload it in the skills settings of Claude (claude.ai, desktop and mobile apps) or ChatGPT.
 
 </details>
 
