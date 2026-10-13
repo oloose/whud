@@ -63,6 +63,7 @@ Rules:
 - Personal wording ("we", "you") is fine, but do not overdo it. 
 - Do not refer to the chat or commit itself ("in this chat", "in this commit").
 - Make each question specific enough to have a checkable answer.
+- Avoid questions whose answer anyone could guess. Ask about a specific choice, value, edge case or non-obvious consequence.
 - Go from broad (what, why) to narrow (details).
 - Take reference answers from the material only, never from your own knowledge.
 
@@ -83,8 +84,10 @@ Example questions, for reference only:
 
 ## Modes
 
-- `choice`: give options A-D. Make every wrong option plausible, each a real misconception or a wrong-but-reasonable design, no obvious nonsense. Randomise the position of the right one.
-  - Keep all options about the same length, detail and tone. The right one must not be the longest or the most specific, and the wrong ones get just as much detail.
+- `choice`: give options A-D. Randomise position right one.
+  - Wrong options: real alternatives if there were any, otherwise invent plausible ones (the right answer with a detail changed, its opposite, a true fact that answers another question). Someone who half remembers could pick each.
+  - Lengths may differ, but the right option is often not the longest or most elaborate. Vary which it is.
+  - Check each question: could someone who never saw the material guess the answer from length, detail or common sense? If so, rewrite.
 - `free`: the user types an answer. Show the reference answer. The user marks themselves right, partly right or wrong.
 - `graded`: the user types an answer. Judge the meaning against the reference answer, not the wording.
   - Right: the main idea is there, even if the answer is short, informal or in other words.
