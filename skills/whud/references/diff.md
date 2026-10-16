@@ -1,6 +1,14 @@
 # Source: diff
 
-Questions about git changes to any file, not just code.
+Questions about git changes to any file, not just code. Use when the quiz covers a diff, commit, range, branch, staged or uncommitted changes.
+
+## Contents
+
+- Choose the change: which diff the arguments select, and when to ask instead
+- Gather: how to read the diff and drop noise
+- Verify: where reference answers come from
+- Size: changed lines to question count
+- Questions: diff-specific examples and what to skip
 
 ## Choose the change
 

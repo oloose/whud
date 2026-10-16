@@ -1,6 +1,14 @@
 # Source: session
 
-Questions about what was discussed, explained and decided in the current chat. The chat is the only source. It can be about anything: a plan, an idea, research, writing, something someone learned, code.
+Questions about what was discussed, explained and decided in the current chat. The chat is the only source. It can be about anything: a plan, an idea, research, writing, something someone learned, code. Use when the quiz covers "this chat" or no source was given.
+
+## Contents
+
+- Gather: which points of the conversation count
+- What to prioritise: the likely gaps between "the AI did it" and "I understood it"
+- Size: substance to question count
+- Reference answers: the chat is the only truth, with a worked example
+- Questions: session-specific examples
 
 ## Gather
 

@@ -1,6 +1,6 @@
 ---
 name: whud
-description: Ask the user questions about their changes (code, documents, notes) or the current chat session, to test whether they remember and understand them. Use when asked to quiz the user, or on "whud".
+description: Quizzes the user on their own changes (git diffs, commits, code, documents, notes) or on the current chat session, to test whether they remember and understand what was done and decided. Use when the user asks to be quizzed or tested on their work or the conversation, or says "whud".
 ---
 
 # whud
@@ -18,6 +18,8 @@ Read the file for the chosen source:
 - None given: `session`.
 
 ## Arguments
+
+Syntax: `whud [source] [mode] [max=<n>]`, for example `whud HEAD~3 graded max=5`.
 
 - Mode: `choice`, `free` or `graded`. Default `choice`.
 - `max=<n>`: most questions to ask. Default 7.
@@ -37,7 +39,7 @@ Read the file for the chosen source:
    | large | 5-6 |
    | very large | max |
 
-5. Write the full set once: each question, its options (`choice`) and its reference answer.
+5. Write the full set once, internally and not shown to the user: each question, its options (`choice`) and its reference answer.
 6. Tell the user the source, the mode and the number of questions in one short line.
 7. Ask one question at a time. Wait for the answer. Give feedback. Ask the next.
 
@@ -60,7 +62,7 @@ Rules:
 - Do not take the answer 1:1 from the material. Do not ask for a commit message or a chat line word for word.
 - Do not paste the passage that answers the question. Name the thing and let them recall.
 - Ask directly about the content and phrase it naturally, like a person would.
-- Personal wording ("we", "you") is fine, but do not overdo it. 
+- Personal wording ("we", "you") is fine, but do not overdo it.
 - Do not refer to the chat or commit itself ("in this chat", "in this commit").
 - Make each question specific enough to have a checkable answer.
 - Avoid questions whose answer anyone could guess. Ask about a specific choice, value, edge case or non-obvious consequence.
