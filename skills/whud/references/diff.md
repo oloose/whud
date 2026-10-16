@@ -31,7 +31,7 @@ Say which change you use, in one line.
 ## Gather
 
 1. `git diff --stat <change>` (or `git show --stat`) for the overview.
-2. Drop noise: lockfiles, `dist/`, `build/`, minified, generated and vendored files, snapshots. Use pathspec excludes, for example `-- . ':!*.lock' ':!dist'`.
+2. Drop noise: lockfiles, `dist/`, `build/`, minified, generated and vendored files, snapshots. Use pathspec excludes, for example `-- . ':!*.lock' ':!dist'` (depends on the shell in use).
 3. Read the filtered diff. If it is large, read it file by file and focus on the most meaningful changes. Do not try to quiz about all of it.
 4. Open the changed files around the hunks. Ask about how the surrounding code or text works, not only about what changed.
 
