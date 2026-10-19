@@ -1,6 +1,7 @@
 ---
 name: whud
 description: Quizzes the user on their own changes (git diffs, commits, code, documents, notes) or on the current chat session, to test whether they remember and understand what was done and decided. Use when the user asks to be quizzed or tested on their work or the conversation, or says "whud".
+argument-hint: "`whud [session|(<diff|commit-range|branch)] [choice|free|graded] [<n>]` e.g. `whud session choice 10`"
 ---
 
 # whud
